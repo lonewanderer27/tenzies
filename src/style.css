@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+body {
+    margin: 0;
+    background-color: #0B2434;
+    padding: 30px 20px;
+    font-family: 'Karla';
+}
+
+.title {
+    font-size: 40px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.instructions {
+    font-family: 'Inter';
+    font-weight: 400;
+    color: #4A4E74;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    margin: auto;
+    min-height: 400px;
+    max-width: 400px;
+    padding: 35px;
+}
+
+._1-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._2-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+._2-face .pip:nth-of-type(2) {
+    align-self: flex-end;
+}
+
+._3-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+._3-face .pip:nth-of-type(2) {
+    align-self: center;
+}
+
+._3-face .pip:nth-of-type(3) {
+    align-self: flex-end;
+}
+
+._4-face, ._6-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+._4-face .column, ._6-face .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+._5-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+._5-face .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+._5-face .column:nth-of-type(2) {
+    justify-content: center;
+}
+
+.die--container {
+    width: 100%;
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1rem;
+}
+
+.die {
+    background-color: white;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 3.81277px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 5px 5px;
+    color: #2B283A;
+    cursor: pointer;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.die:hover {
+    background-color: gainsboro;
+}
+
+.pip {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 2px;
+    background-color: #333;
+    box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}
+
+button {
+    font-family: 'Karla';
+    font-weight: 700;
+    font-size: 25px;
+    color: white;
+    padding: 10px 40px;
+    background: #5035FF;
+    box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+    border-radius: 3.81277px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.is-held {
+    background-color: #59E391 !important;
+}
