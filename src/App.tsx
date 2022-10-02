@@ -5,13 +5,13 @@ import { newDice } from './interfaces'
 import { nanoid } from 'nanoid'
 import { useState, useEffect } from 'react'
 import Confetti from "react-confetti"
-import BestAttempts from './components/BestAttempts'
+import BestRolls from './components/BestRolls'
 
 function App() {
   const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
-  const [attempts, setAttempts] = useState(0)
-  const [bestAttempts, setBestAttempts] = useState(Number(localStorage.getItem("bestAttempts")) || 0)
+  const [rolls, setRolls] = useState(0)
+  const [bestRolls, setBestRolls] = useState(Number(localStorage.getItem("bestRolls")) || 0)
 
   useEffect(() => {
     console.log("Dice stated changed.")
@@ -24,9 +24,9 @@ function App() {
     })
 
     if (result) {
-      if (attempts < bestAttempts || bestAttempts == 0) {
-        setBestAttempts(attempts)
-        localStorage.setItem("bestAttempts", attempts.toString())
+      if (rolls < bestRolls || bestRolls == 0) {
+        setBestRolls(rolls)
+        localStorage.setItem("bestRolls", rolls.toString())
       }
       setTenzies(true)
       result && console.log("You won!")
@@ -54,7 +54,7 @@ function App() {
   function resetGame(): void {
     setTenzies(false)
     setDice(allNewDice())
-    setAttempts(0)
+    setRolls(0)
   }
 
   function rollDice(): void {
@@ -64,7 +64,7 @@ function App() {
                   :
                 generateNewDie()
     }))
-    setAttempts(prevAttemps => prevAttemps+=1)
+    setRolls(prevAttemps => prevAttemps+=1)
   }
 
   function holdDice(id: string): void {
@@ -88,7 +88,7 @@ function App() {
     />
   ))
 
-  console.log(`Current Attempts: ${attempts}\nBest Attempts: ${bestAttempts}`)
+  console.log(`Current Attempts: ${rolls}\nBest Attempts: ${bestRolls}`)
   console.log(`Best Attempts from LocalStorage: ${localStorage.getItem("bestAttempts")}`)
 
   return (
@@ -97,14 +97,14 @@ function App() {
       <main>
         <h1 className="title">Tenzies</h1>
         <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        <BestAttempts attempt={bestAttempts}/>
+        {bestRolls != 0 && <BestRolls attempt={bestRolls}/>}
         <div className="die--container">
           {diceElements}
         </div>
         <Button handleClick={tenzies ? resetGame : rollDice}>
           {tenzies ? "New Game": "Roll"}
         </Button>
-        <p>Attempts: {attempts}</p>
+        <p>Rolls: {rolls}</p>
       </main>
     </div>
   )
