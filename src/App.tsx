@@ -15,8 +15,8 @@ function App() {
   const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
   const [rolls, setRolls] = useState(0)
-  const [bestRoll, setBestRolls] = useState(Number(localStorage.getItem("bestRolls")) || 0)
-  const [bestTime, setBestTime] = useState(localStorage.getItem("bestTime")) || "00:00:00"
+  const [bestRoll, setBestRolls] = useState(Number(localStorage.getItem("bestRolls") || 0) )
+  const [bestTime, setBestTime] = useState<string>(localStorage.getItem("bestTime") || "00:00:00")
 
   const timer = useTimer({
     create: {
@@ -123,13 +123,11 @@ function App() {
       {tenzies && <Confetti />}
       <main>
         <h1 className="title">Tenzies</h1>
-        <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        {bestRoll != 0 && 
-          <BestAttempt 
-            bestRoll={bestRoll}
-            bestTime={bestTime!}
-          />
-        }
+        <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p> 
+        <BestAttempt 
+          bestRoll={bestRoll}
+          bestTime={bestTime!}
+        />
         <div className="die--container">
           {diceElements}
         </div>
