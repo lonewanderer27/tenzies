@@ -159,3 +159,9 @@ button:active {
 .is-held {
     background-color: #59E391 !important;
 }
+
+.currentStats {
+    display: flex;
+    gap: 10px;
+    margin: 15px;
+}
